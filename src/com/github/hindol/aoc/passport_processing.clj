@@ -1,21 +1,11 @@
 (ns com.github.hindol.aoc.passport-processing
   (:refer-clojure :exclude [int])
   (:require [clojure.java.io :as io]
-            [clojure.string :as str]))
+            [clojure.string :as str]
+            [com.github.hindol.aoc.utils :refer [int count-if]]))
 
 (def input-file
   "resources/passport-processing.txt")
-
-(defn int
-  [x]
-  (if (string? x)
-    (when (re-matches #"\d+" x)
-      (Integer/parseInt x))
-    (clojure.core/int x)))
-
-(defn count-if
-  [pred coll]
-  (count (filter pred coll)))
 
 (defn into-map
   [s]

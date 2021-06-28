@@ -1,19 +1,13 @@
 (ns com.github.hindol.aoc.password-philosophy
-  (:require [clojure.java.io :as io]))
+  (:refer-clojure :exclude [int])
+  (:require [clojure.java.io :as io]
+            [com.github.hindol.aoc.utils :refer [int count-if]]))
 
 (def input-file
   "resources/password-philosophy.txt")
 
 (def line-regex
   #"(\d+)-(\d+) (\w): (.*)")
-
-(defn str->int
-  [s]
-  (Integer/parseInt s))
-
-(defn count-if
-  [pred coll]
-  (count (filter pred coll)))
 
 (defn get-many
   "Returns the values corresponding to `keys` from map `m`. If `m` is
@@ -50,8 +44,8 @@
          (map #(->> %
                     (parse-line line-regex)
                     (zipmap [:x :y :letter :password])
-                    (update-values {:x str->int
-                                    :y str->int
+                    (update-values {:x int
+                                    :y int
                                     :letter first}))))))
 
 (defn valid-password?

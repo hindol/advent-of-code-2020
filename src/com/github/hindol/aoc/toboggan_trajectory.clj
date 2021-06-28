@@ -1,9 +1,6 @@
 (ns com.github.hindol.aoc.toboggan-trajectory
-  (:require [clojure.java.io :as io]))
-
-(defn count-if
-  [pred coll]
-  (count (filter pred coll)))
+  (:require [clojure.java.io :as io]
+            [com.github.hindol.aoc.utils :refer [count-if]]))
 
 (def area-map
   (vec (line-seq (io/reader "resources/toboggan-trajectory.txt"))))

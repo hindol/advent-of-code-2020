@@ -1,17 +1,15 @@
 (ns com.github.hindol.aoc.report-repair
-  (:require [clojure.java.io :as io]))
+  (:refer-clojure :exclude [int])
+  (:require [clojure.java.io :as io]
+            [com.github.hindol.aoc.utils :refer [int]]))
 
 (def ^:dynamic *input-file*
   "resources/report-repair.txt")
 
-(defn str->int
-  [s]
-  (Integer/parseInt s))
-
 (defn entries
   [input]
   (let [lines (line-seq (io/reader input))]
-    (map str->int lines)))
+    (map int lines)))
 
 (defn find-entries-with-sum
   [es sum]
